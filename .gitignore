@@ -1,0 +1,17 @@
+# Ignore build outputs
+backend/target/
+
+# ignore IDE files
+*.iml
+.idea/
+.vscode/
+
+# Java class files
+*.class
+
+# Node modules and logs
+frontend/node_modules/
+frontend/npm-debug.log*
+
+# other
+.DS_Store
