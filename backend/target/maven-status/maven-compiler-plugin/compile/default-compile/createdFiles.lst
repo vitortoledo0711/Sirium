@@ -1,0 +1,9 @@
+service\UsuarioService.class
+controller\UsuarioController.class
+model\LoginRequest.class
+model\TokenResponse.class
+repository\UsuarioRepository.class
+model\Usuario.class
+controller\AuthController.class
+security\JwtService.class
+main\ApiApplication.class
