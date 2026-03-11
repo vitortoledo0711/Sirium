@@ -9,8 +9,8 @@ function App() {
   const logoutTimer = useRef(null);
 
   // hard–coded credentials for now; will replace with API call later
-  const validCpf = '00000000000';
-  const validPassword = 'secret';
+  const validCpf = 'admin';
+  const validPassword = 'admin';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,7 +91,7 @@ function App() {
         <p>Aplicação inicial em React.</p>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>
-      <footer align="right" className="App-footer">
+      <footer className="App-footer">
         <p className={status === 'connected' ? 'status-connected' : 'status-disconnected'}>
           {status}
         </p>
