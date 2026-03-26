@@ -8,17 +8,32 @@ function App() {
   const [status, setStatus] = useState('disconnected');
   const logoutTimer = useRef(null);
 
-  // hard–coded credentials for now; will replace with API call later
-  const validCpf = 'admin';
-  const validPassword = 'admin';
+  const [token, setToken] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (cpf === validCpf && password === validPassword) {
+    setError('');
+
+    try {
+      const res = await fetch('http://localhost:8080/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ usuario: cpf, senha: password }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Login falhou (${res.status}): ${text || res.statusText}`);
+      }
+
+      const data = await res.json();
+      setToken(data.token);
       setLoggedIn(true);
       setError('');
-    } else {
-      setError('CPF ou senha inválidos.');
+    } catch (err) {
+      setError(err.message);
     }
   };
 
